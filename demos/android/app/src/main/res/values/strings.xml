@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">App</string>
+    <string name="app_name">Demo</string>
     <string name="action_logout">退出</string>
-    <string name="title_activity_login"></string>
+    <string name="preference_file_key">preference</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="loadding">正在获取用户信息...!</string>
+    <string name="login">登录</string>
 </resources>

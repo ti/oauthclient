@@ -2,16 +2,16 @@ package cm.lnx.auth.model;
 
 
 public class UserInfo {
-    private String uid;
+    private String id;
     private String name;
     private String gender;
     private String email;
-    private String phone;
-    private String avatar;
+    private String phoneNumber;
+    private String picture;
     private String birthday;
 
     public String getUserId() {
-        return uid;
+        return id;
     }
 
     public String getName() {
@@ -26,18 +26,16 @@ public class UserInfo {
         return email;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public String getAvatar() {
-        return avatar;
+    public String getPicture() {
+        return picture;
     }
 
     public String getBirthday() {
         return birthday;
     }
-
-
 
 }

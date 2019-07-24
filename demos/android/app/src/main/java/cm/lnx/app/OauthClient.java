@@ -18,10 +18,10 @@ import cm.lnx.auth.oauth.Token;
 public class OauthClient {
 
     private static OauthClient instance = null;
-    private  Config mOauthConfig;
-    private  Context mContext;
-    private  Oauth2 oauth2Client;
-    private  Token token;
+    private Config mOauthConfig;
+    private Context mContext;
+    private Oauth2 oauth2Client;
+    private Token token;
 
     /**
      * 获取全局client单例
@@ -42,12 +42,12 @@ public class OauthClient {
     public void init(Context context) {
         //relace this in your code, when your config file is dynamic
         Config config = Config.getInstance();
-        config.setClientID("android.spotmau.cn");
-        config.setClientSecret("addd64727bf6UkXptr93RgnqrY6QW573061becbfc0");
-        config.setBaseURL("https://uc.spm.pub");
+        config.setClientID("com.example.android");
+        config.setClientSecret("aZuGSLz6HjHhCXFtMk8x");
+        config.setBaseURL("https://account.nanxi.li");
         //根据自己到实际情况，获取scope
         config.setScope("all");
-        config.setRedirectURI("spotmau://oauth/callback");
+        config.setRedirectURI("lnx://oauth/callback");
         String userAgent = getUserAgent(context) + " " + config.getUserAgent();
         config.setUserAgent(userAgent);
         instance.mOauthConfig = config;

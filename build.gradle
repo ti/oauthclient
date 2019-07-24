@@ -1,9 +1,11 @@
+plugins {
+    id 'java'
+}
+
 group 'cm.lnx.auth'
-version '1.0'
+version '1.0-SNAPSHOT'
 
-apply plugin: 'java'
-
-sourceCompatibility = 1.7
+sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -16,5 +18,5 @@ dependencies {
     compile 'com.squareup.okio:okio:1.11.0'
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'javax.servlet:javax.servlet-api:3.1.0'
-    testCompile 'junit:junit:4.12'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
 }

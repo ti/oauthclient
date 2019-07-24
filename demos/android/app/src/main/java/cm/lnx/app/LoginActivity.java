@@ -1,5 +1,6 @@
 package cm.lnx.app;
 
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -23,9 +24,7 @@ import java.util.Map;
 import cm.lnx.auth.oauth.Config;
 import cm.lnx.auth.oauth.Token;
 
-
 public class LoginActivity extends BaseActivity {
-
     private UserLoginTask mAuthTask;
     private static final String EXTRA_ON_LOGIN = "extra_on_login";
     private WebView mWebView;
@@ -41,7 +40,7 @@ public class LoginActivity extends BaseActivity {
         return intent;
     }
 
-    public static void start(Activity fromActivity,Intent onLogin) {
+    public static void start(Activity fromActivity, Intent onLogin) {
         Intent intent = makeIntent(fromActivity, onLogin);
         fromActivity.startActivity(intent);
     }
@@ -92,6 +91,7 @@ public class LoginActivity extends BaseActivity {
             }
 
         });
+
         CookieManager.getInstance().removeAllCookies(new ValueCallback<Boolean>() {
             @Override
             public void onReceiveValue(Boolean value) {
@@ -151,4 +151,3 @@ public class LoginActivity extends BaseActivity {
         }
     }
 }
-
