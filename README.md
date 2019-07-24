@@ -1,8 +1,12 @@
-# Oauth DK For Java
+# Oauth SDK For Java
+
+a oauth sdk for java
+
+build the gradle
 
 ### requires
 ```bash
-gson-2.8.0.jar
-okhttp-3.6.0.jar
-okio-1.11.0.jar
+compile 'com.squareup.okhttp3:okhttp:3.6.0'
+compile 'com.squareup.okio:okio:1.11.0'
+compile 'com.google.code.gson:gson:2.8.0'
 ```
