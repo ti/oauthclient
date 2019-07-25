@@ -16,13 +16,16 @@ import okhttp3.Response;
 
 
 
-public class MainActivity extends BaseAuthedActivity {
+public class MainActivity extends BaseActivity {
     private TextView textView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (!isAuthed(this)) {
+            return;
+        }
         initViews();
     }
 
@@ -81,7 +84,7 @@ public class MainActivity extends BaseAuthedActivity {
             OauthClient.getInstance().logout();
             return true;
         } else if (id == R.id.action_settings) {
-            WebActivity.start(this, "账户设置", "https://account.nanxi.li/web/pref");
+            WebActivity.start(this, "账户设置", "https://account.nanxi.li/web/pref", true);
             return true;
         }
         return super.onOptionsItemSelected(item);

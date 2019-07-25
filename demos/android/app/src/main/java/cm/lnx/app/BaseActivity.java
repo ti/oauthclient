@@ -1,5 +1,6 @@
 package cm.lnx.app;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -37,6 +38,21 @@ public class BaseActivity extends AppCompatActivity {
         View.inflate(this, layoutResID, ((ViewGroup) getWindow().getDecorView().getRootView()));
     }
 
+
+    //登录并初始化
+    private boolean isLogin() {
+        return OauthClient.getInstance().getOauth2Client() != null;
+    }
+
+
+    protected boolean isAuthed(Activity activity) {
+        if (!isLogin()) {
+            WelcomeActivity.start(this);
+            activity.finish();
+            return false;
+        }
+        return true;
+    }
 
 
     @Override

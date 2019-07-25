@@ -3,7 +3,6 @@ package cm.lnx.auth.oauth;
 
 import cm.lnx.auth.model.GenericResponse;
 import cm.lnx.auth.model.UserInfo;
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import okhttp3.*;
 
