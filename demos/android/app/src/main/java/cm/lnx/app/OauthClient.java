@@ -44,21 +44,20 @@ public class OauthClient {
         Config config = Config.getInstance();
         config.setClientID("com.example.android");
         config.setClientSecret("ZuGSLz6HjHhCXFtMk8x");
-        String baseURL = "https://i.xbase.cloud";
+        String baseURL = "https://account.nanxi.li";
 
-        config.setBaseURL("https:/i.xbase.cloud");
+        config.setBaseURL("https://account.nanxi.li");
         config.setScope("all");
 
         config.setDevMode(true);
 
         Config.Endpoint endpoint = new Config.Endpoint();
 
-        endpoint.setAuthURL(baseURL + "/oauth/");
-        endpoint.setTokenURL(baseURL +"/v1/auth/token");
-        endpoint.setRevokeURL(baseURL +"/v1/auth/revoke");
+        endpoint.setAuthURL(baseURL + "/v1/oauth/authorize");
+        endpoint.setTokenURL(baseURL +"/v1/oauth/token");
+        endpoint.setRevokeURL(baseURL +"/v1/oauth/revoke");
         endpoint.setTokenIntrospectURL(baseURL +"/v1/oauth/introspect");
         endpoint.setUserInfoURL(baseURL +"/v1/user/me");
-
         config.setEndpoint(endpoint);
         //根据自己到实际情况，获取scope
         config.setScope("all");
