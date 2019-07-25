@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -29,7 +30,6 @@ public class BaseActivity extends AppCompatActivity {
             setSupportActionBar(toolbar);
         }
     }
-
 
 
     public void setContent(@LayoutRes int layoutResID) {

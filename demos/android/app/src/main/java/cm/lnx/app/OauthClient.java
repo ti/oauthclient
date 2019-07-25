@@ -43,8 +43,23 @@ public class OauthClient {
         //relace this in your code, when your config file is dynamic
         Config config = Config.getInstance();
         config.setClientID("com.example.android");
-        config.setClientSecret("aZuGSLz6HjHhCXFtMk8x");
+        config.setClientSecret("ZuGSLz6HjHhCXFtMk8x");
+        String baseURL = "https://account.nanxi.li";
+
         config.setBaseURL("https://account.nanxi.li");
+        config.setScope("all");
+
+        config.setDevMode(true);
+
+        Config.Endpoint endpoint = new Config.Endpoint();
+
+        endpoint.setAuthURL(baseURL + "/v1/oauth/authorize");
+        endpoint.setTokenURL(baseURL +"/v1/oauth/token");
+        endpoint.setRevokeURL(baseURL +"/v1/oauth/revoke");
+        endpoint.setTokenIntrospectURL(baseURL +"/v1/oauth/introspect");
+        endpoint.setUserInfoURL(baseURL +"/v1/user/me");
+
+        config.setEndpoint(endpoint);
         //根据自己到实际情况，获取scope
         config.setScope("all");
         config.setRedirectURI("lnx://oauth/callback");

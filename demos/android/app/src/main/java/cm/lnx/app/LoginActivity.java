@@ -17,6 +17,8 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,7 +26,7 @@ import java.util.Map;
 import cm.lnx.auth.oauth.Config;
 import cm.lnx.auth.oauth.Token;
 
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends AppCompatActivity {
     private UserLoginTask mAuthTask;
     private static final String EXTRA_ON_LOGIN = "extra_on_login";
     private WebView mWebView;
@@ -48,7 +50,7 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContent(R.layout.content_login);
+        setContentView(R.layout.activity_login);
         initViews();
     }
 
@@ -89,7 +91,6 @@ public class LoginActivity extends BaseActivity {
                 }
                 super.onPageStarted(view, url, favicon);
             }
-
         });
 
         CookieManager.getInstance().removeAllCookies(new ValueCallback<Boolean>() {

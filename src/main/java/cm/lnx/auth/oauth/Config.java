@@ -1,6 +1,5 @@
 package cm.lnx.auth.oauth;
 
-import cm.lnx.auth.util.ConfigProps;
 import cm.lnx.auth.util.GsonUtils;
 import okhttp3.*;
 import okhttp3.internal.Version;
@@ -11,9 +10,6 @@ import java.util.Map;
 
 /**
  * 配置文件
- * <p>
- * 服务器可编辑 /WEB-INF/classes/oauthconfig.properties
- * <p>
  * 手机端可自行创建
  */
 public class Config {
@@ -28,6 +24,10 @@ public class Config {
     private String redirectURI;
     private boolean devMode;
     private final String version = "1.0.0";
+
+    public void setDevMode(boolean devMode) {
+        this.devMode = devMode;
+    }
 
     public static class Endpoint {
         private String authURL;
@@ -164,20 +164,7 @@ public class Config {
     public static Config getInstance() {
         if (instance == null) {
             instance = new Config();
-            instance.clientID = ConfigProps.getValue("clientID");
-            instance.clientSecret = ConfigProps.getValue("clientSecret");
-            instance.scope = ConfigProps.getValue("scope");
-            instance.loginURL = ConfigProps.getValue("loginURL");
-            instance.clientCredentialsScope = ConfigProps.getValue("clientCredentialsScope");
-            instance.redirectURI = ConfigProps.getValue("redirectURI");
-            instance.devMode = (ConfigProps.getValue("devMode").equals("true"));
             instance.endpoint = new Endpoint();
-            instance.baseURL = ConfigProps.getValue("baseURL");
-            instance.endpoint.tokenURL = instance.baseURL + ConfigProps.getValue("tokenURL");
-            instance.endpoint.authURL = instance.baseURL + ConfigProps.getValue("authorizeURL");
-            instance.endpoint.revokeURL = instance.baseURL + ConfigProps.getValue("revokeURL");
-            instance.endpoint.userInfoURL = instance.baseURL + ConfigProps.getValue("uerInfoURL");
-            instance.endpoint.tokenIntrospectURL = instance.baseURL + ConfigProps.getValue("tokenIntrospectURL");
         }
         return instance;
     }

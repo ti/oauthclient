@@ -1,7 +1,5 @@
 package cm.lnx.app;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,18 +16,21 @@ import okhttp3.Response;
 
 
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseAuthedActivity {
     private TextView textView;
 
-    //登录并初始化
-    private boolean isLogin() {
-        return OauthClient.getInstance().getOauth2Client() != null;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        initViews();
     }
 
 
     public static Intent makeIntent(Context context) {
         return new Intent(context, MainActivity.class);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -38,22 +39,12 @@ public class MainActivity extends BaseActivity {
         return true;
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (!isLogin()) {
-            WelcomeActivity.start(this);
-            finish();
-            return;
-        }
-        initViews();
-    }
 
     //初始化界面
     private void initViews() {
         setContent(R.layout.content_main);
         textView = (TextView) findViewById(R.id.text);
-        OauthClient.getInstance().getOauth2Client().asyncGet("/v1/oauth/userinfo", new Callback() {
+        OauthClient.getInstance().getOauth2Client().asyncGet("/v1/user/me", new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 final String msg = e.getMessage();
@@ -86,12 +77,13 @@ public class MainActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
             OauthClient.getInstance().logout();
             return true;
+        } else if (id == R.id.action_settings) {
+            WebActivity.start(this, "账户设置", "https://account.nanxi.li/web/pref");
+            return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }
