@@ -65,7 +65,10 @@ public class LoginActivity extends AppCompatActivity {
         settings.setBuiltInZoomControls(false);
         settings.setDomStorageEnabled(true);
         settings.setDatabaseEnabled(true);
+        settings.setAllowFileAccess(true);
+        settings.setAppCacheEnabled(true);
         mWebView.setVisibility(View.VISIBLE);
+
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {

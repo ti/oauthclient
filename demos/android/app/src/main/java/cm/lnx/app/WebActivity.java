@@ -32,13 +32,15 @@ public class WebActivity extends BaseAuthedActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle(webTitle);
 
-        mWebView = (WebView) findViewById(R.id.webView);
-        mProgressBar = (ProgressBar) this.findViewById(R.id.progress);
+        mWebView = findViewById(R.id.webView);
+        mProgressBar = this.findViewById(R.id.progress);
         WebSettings settings = mWebView.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setBuiltInZoomControls(false);
         settings.setDomStorageEnabled(true);
         settings.setDatabaseEnabled(true);
+        settings.setAllowFileAccess(true);
+        settings.setAppCacheEnabled(true);
         mWebView.setVisibility(View.VISIBLE);
         mWebView.setWebViewClient(new WebViewClient() {
             @Override

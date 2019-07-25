@@ -44,18 +44,18 @@ public class OauthClient {
         Config config = Config.getInstance();
         config.setClientID("com.example.android");
         config.setClientSecret("ZuGSLz6HjHhCXFtMk8x");
-        String baseURL = "https://account.nanxi.li";
+        String baseURL = "https://i.xbase.cloud";
 
-        config.setBaseURL("https://account.nanxi.li");
+        config.setBaseURL("https:/i.xbase.cloud");
         config.setScope("all");
 
         config.setDevMode(true);
 
         Config.Endpoint endpoint = new Config.Endpoint();
 
-        endpoint.setAuthURL(baseURL + "/v1/oauth/authorize");
-        endpoint.setTokenURL(baseURL +"/v1/oauth/token");
-        endpoint.setRevokeURL(baseURL +"/v1/oauth/revoke");
+        endpoint.setAuthURL(baseURL + "/oauth/");
+        endpoint.setTokenURL(baseURL +"/v1/auth/token");
+        endpoint.setRevokeURL(baseURL +"/v1/auth/revoke");
         endpoint.setTokenIntrospectURL(baseURL +"/v1/oauth/introspect");
         endpoint.setUserInfoURL(baseURL +"/v1/user/me");
 
@@ -73,7 +73,8 @@ public class OauthClient {
      * 退出client
      */
     public void logout() {
-        this.oauth2Client.revoke();
+        // TODO: 确认退出状态
+        this.oauth2Client.revoke(null);
         this.token = null;
         this.oauth2Client = null;
         Intent intent = new Intent(mContext, WelcomeActivity.class);
